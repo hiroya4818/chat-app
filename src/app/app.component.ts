@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Observable } from 'rxjs';
 
 import { Comment } from './class/comment';
 import { User } from './class/user';
@@ -22,4 +24,16 @@ const COMMENTS: Comment[] = [
 export class AppComponent {
   comments = COMMENTS;
   currentUser = CURRENT_USER;
+  comment = '';
+  item$: Observable<any>;
+
+  constructor(private db: AngularFireDatabase) {
+    this.item$ = db.object('/item').valueChanges();
+  }
+
+  addComment(comment: string): void {
+    if(comment) {
+      this.comments.push(new Comment(this.currentUser, comment));
+    }
+  }
 }

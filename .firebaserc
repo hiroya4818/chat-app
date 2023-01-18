@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-chat-5e76b": {
+      "hosting": {
+        "chat-app": [
+          "angular-chat-5e76b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-chat-5e76b"
+  }
+}
